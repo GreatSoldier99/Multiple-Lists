@@ -28,5 +28,7 @@ public class Main{
 
         System.out.println("Cantidad de libros en la posición #5: " + books.getAt(5));
         System.out.println("Cantidad de estudiantes en la posición #2: " + students.getAt(2));
+
+        books.print();
     }
 }
