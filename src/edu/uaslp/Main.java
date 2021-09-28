@@ -4,10 +4,10 @@ import edu.uaslp.list.arraylist.ArrayList;
 
 public class Main{
     public static void main(String[] args) {
-        LinkedList<Integer> books = new LinkedList<>();
-        LinkedList<Integer> students = new LinkedList<>();
-        /*ArrayList books = new ArrayList();
-        ArrayList students = new ArrayList();*/
+        /*LinkedList<Integer> books = new LinkedList<>();
+        LinkedList<Integer> students = new LinkedList<>();*/
+        ArrayList<Integer> books = new ArrayList<>();
+        ArrayList<Integer> students = new ArrayList<>();
 
         books.add(7);
         books.add(70);
