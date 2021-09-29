@@ -1,8 +1,10 @@
 package edu.uaslp.list.arraylist;
 
+import edu.uaslp.list.List;
+
 import java.util.Arrays;
 
-public class ArrayList<T>{
+public class ArrayList<T> implements List<T> {
     private Object array[];
     private int capacity;
     private int size;
@@ -44,8 +46,8 @@ public class ArrayList<T>{
         return size;
     }
 
-    public Object getAt(int index) {
-        return array[index];
+    public T getAt(int index) {
+        return (T)array[index];
     }
 
     public void print() {

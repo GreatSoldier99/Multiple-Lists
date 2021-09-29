@@ -1,13 +1,15 @@
 package edu.uaslp;
+
+import edu.uaslp.list.List;
 import edu.uaslp.list.linkedlist.LinkedList;
 import edu.uaslp.list.arraylist.ArrayList;
 
 public class Main{
     public static void main(String[] args) {
-        /*LinkedList<Integer> books = new LinkedList<>();
-        LinkedList<Integer> students = new LinkedList<>();*/
-        ArrayList<Integer> books = new ArrayList<>();
-        ArrayList<Integer> students = new ArrayList<>();
+        List<Integer> books = new LinkedList<>();
+        /*List<Integer> students = new LinkedList<>();
+        List<Integer> books = new ArrayList<>();*/
+        List<Integer> students = new ArrayList<>();
 
         books.add(7);
         books.add(70);

@@ -1,30 +1,32 @@
 package edu.uaslp.list.linkedlist;
 
-public class LinkedList<H> {
+import edu.uaslp.list.List;
+
+public class LinkedList<H> implements List<H> {
     private Node<H> head;
     private Node<H> tail;
     private int size;
 
-    public void add(H dato){
+    public void add(H dato) {
         Node<H> node = new Node<>();
 
         node.data = dato;
 
-        if(head == null) {
+        if (head == null) {
             head = node;
         }
 
         node.previous = tail;
 
-        if(tail != null) {
+        if (tail != null) {
             tail.next = node;
         }
 
         tail = node;
-        size ++;
+        size++;
     }
 
-    public void insert(H dato, int index){
+    public void insert(H dato, int index) {
         int counter = 0;
         Node iterator = head;
 
@@ -32,7 +34,7 @@ public class LinkedList<H> {
             return;
         }
 
-        if(index == size){
+        if (index == size) {
             add(dato);
             return;
         }
@@ -48,7 +50,7 @@ public class LinkedList<H> {
         node.next = iterator;
         node.previous = iterator.previous;
 
-        if(iterator.previous == null){
+        if (iterator.previous == null) {
             head = node;
         } else {
             iterator.previous.next = node;
@@ -56,7 +58,7 @@ public class LinkedList<H> {
         iterator.previous = node;
     }
 
-    public void delete(int index){
+    public void delete(int index) {
         int counter = 0;
         Node iterator = head;
 
@@ -84,26 +86,26 @@ public class LinkedList<H> {
         size--;
     }
 
-    public int getSize(){
+    public int getSize() {
         return size;
     }
 
-    public int getAt(int index){
+    public H getAt(int index) {
         int counter = 0;
         Node<H> it = head;
 
-        while(counter < index && it != null){
+        while (counter < index && it != null) {
             counter++;
             it = it.next;
         }
 
-        return it == null ? 0 : (int) it.data;
+        return it == null ? null : it.data;
     }
 
-    public void print(){
+    public void print() {
         Node iterator = head;
 
-        while(iterator != null){
+        while (iterator != null) {
             System.out.println(iterator.data);
             iterator = iterator.next;
         }
