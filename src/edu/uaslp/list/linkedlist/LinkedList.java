@@ -1,11 +1,34 @@
 package edu.uaslp.list.linkedlist;
 
+import edu.uaslp.list.Iterator;
 import edu.uaslp.list.List;
 
 public class LinkedList<H> implements List<H> {
     private Node<H> head;
     private Node<H> tail;
     private int size;
+
+    private class LinkedListIterator implements Iterator<H> {
+        private Node<H> currentNode;
+
+        LinkedListIterator(){
+            currentNode=head;
+        }
+
+        public H next(){
+            H data=currentNode.data;
+            currentNode=currentNode.next;
+            return data;
+        }
+
+        public boolean hasNext() {
+            return currentNode!=null;
+        }
+    }
+
+    public Iterator<H> getIterator(){
+        return new LinkedListIterator();
+    }
 
     public void add(H dato) {
         Node<H> node = new Node<>();
@@ -100,14 +123,5 @@ public class LinkedList<H> implements List<H> {
         }
 
         return it == null ? null : it.data;
-    }
-
-    public void print() {
-        Node iterator = head;
-
-        while (iterator != null) {
-            System.out.println(iterator.data);
-            iterator = iterator.next;
-        }
     }
 }

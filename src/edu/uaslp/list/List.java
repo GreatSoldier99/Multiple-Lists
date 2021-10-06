@@ -12,5 +12,5 @@ public interface List<T>{
 
     void insert(T data, int index);
 
-    void print();
+    Iterator<T> getIterator();
 }

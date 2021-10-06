@@ -1,5 +1,6 @@
 package edu.uaslp.list.arraylist;
 
+import edu.uaslp.list.Iterator;
 import edu.uaslp.list.List;
 
 import java.util.Arrays;
@@ -8,6 +9,27 @@ public class ArrayList<T> implements List<T> {
     private Object array[];
     private int capacity;
     private int size;
+
+    private class ArrayListIterator implements Iterator<T> {
+        private int currentIndex=0;
+        public final ArrayList<T> arrayList;
+
+        ArrayListIterator(ArrayList<T> arrayList){
+            this.arrayList=arrayList;
+        }
+
+        public T next() {
+            return (T)array[currentIndex++];
+        }
+
+        public boolean hasNext() {
+            return currentIndex<size;
+        }
+    }
+
+    public Iterator<T> getIterator(){
+        return new ArrayListIterator(this);
+    }
 
     public ArrayList() {
         array= new Object[10];
@@ -48,11 +70,5 @@ public class ArrayList<T> implements List<T> {
 
     public T getAt(int index) {
         return (T)array[index];
-    }
-
-    public void print() {
-        int i;
-        for (i = 0; i < size; i++)
-            System.out.println(array[i]);
     }
 }
