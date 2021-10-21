@@ -1,28 +1,27 @@
-package edu.uaslp.list.linkedlist;
+package edu.uaslp.list.arraylist;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import edu.uaslp.list.Iterator;
 
-public class LinkedListTest{
+public class ArrayListTest{
     @Test
     public void whenListIsCreated_thenSizeIsZero() {
         // given:
-        LinkedList<Integer> list = new LinkedList<>();
+        ArrayList<Integer> list = new ArrayList<>();
 
         // when:
         int size = list.getSize();
 
         // then:
         Assertions.assertEquals(0, size);
-
     }
 
     @Test
     public void givenANewList_whenAdd_thenSizeIsOne(){
         // given:
-        LinkedList<String> list = new LinkedList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         // when:
         list.add("Mario");
@@ -34,7 +33,7 @@ public class LinkedListTest{
     @Test
     public void givenAListWithOneElement_whenAdd_thenSizeIsTwo(){
         // given:
-        LinkedList<String> list = new LinkedList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         list.add("Luis");
 
@@ -46,9 +45,41 @@ public class LinkedListTest{
     }
 
     @Test
+    public void givenAListWithTenElements_whenAdd_thenCapacityIsTwenty(){
+        // given
+        ArrayList<Integer> list = new ArrayList<>();
+        int i;
+
+        for(i=0;i<10;i++)
+            list.add(i);
+
+        // when
+        list.add(10);
+
+        // then
+        Assertions.assertEquals(20, list.getCapacity());
+    }
+
+    @Test
+    public void givenAListWithTenElements_whenInsertIndex9_thenCapacityIsTwenty(){
+        // given
+        ArrayList<Integer> list = new ArrayList<>();
+        int i;
+
+        for(i=0;i<10;i++)
+            list.add(i);
+
+        // when
+        list.insert(10,0);
+
+        // then
+        Assertions.assertEquals(20, list.getCapacity());
+    }
+
+    @Test
     public void givenAListWithThreeElements_whenGetAt_thenElementsAreReturnedSuccessfully(){
         // given:
-        LinkedList<String> list = new LinkedList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         list.add("Luis");
         list.add("Maria");
@@ -65,7 +96,7 @@ public class LinkedListTest{
     @Test
     public void givenAListWithThreeElements_whenGetAtForIndex4_thenNullIsReturned(){
         // given:
-        LinkedList<String> list = new LinkedList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         list.add("Luis");
         list.add("Maria");
@@ -77,11 +108,10 @@ public class LinkedListTest{
         Assertions.assertNull(list.getAt(4));
     }
 
-
     @Test
     public void givenAnEmptyList_whenInsert_thenElementIsInsertedSuccessfully(){
         // given:
-        LinkedList<Float> list = new LinkedList<>();
+        ArrayList<Float> list = new ArrayList<>();
 
         // when:
         list.insert(3.5f, 0);
@@ -94,7 +124,7 @@ public class LinkedListTest{
     @Test
     public void whenInsertForIndexLessThanZero_thenElementIsNotInserted(){
         // given:
-        LinkedList<Float> list = new LinkedList<>();
+        ArrayList<Float> list = new ArrayList<>();
 
         // when:
         list.insert(3.5f, -1);
@@ -106,7 +136,7 @@ public class LinkedListTest{
     @Test
     public void whenInsertForIndexGreaterThanSize_thenElementIsNotInserted(){
         // given:
-        LinkedList<Float> list = new LinkedList<>();
+        ArrayList<Float> list = new ArrayList<>();
 
         // when:
         list.insert(3.5f, 1);
@@ -118,7 +148,7 @@ public class LinkedListTest{
     @Test//Debe corregirse
     public void givenAListWith2Elements_whenInsertForIndex1_thenElementIsInserted(){
         // given:
-        LinkedList<String> list = new LinkedList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         list.add("Primero");
         list.add("Tercero");
@@ -136,7 +166,7 @@ public class LinkedListTest{
     @Test//Debe corregirse
     public void givenAListWith2Elements_whenInsertForIndex0_thenElementIsInserted(){
         // given:
-        LinkedList<String> list = new LinkedList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         list.add("Segundo");
         list.add("Tercero");
@@ -154,7 +184,7 @@ public class LinkedListTest{
     @Test
     public void givenAListWith2Elements_whenInsertForIndex2_thenElementIsInserted(){
         // given:
-        LinkedList<String> list = new LinkedList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         list.add("Primero");
         list.add("Segundo");
@@ -172,7 +202,7 @@ public class LinkedListTest{
     @Test
     public void givenAListWith2Elements_whenDeleteForIndex0_thenElementIsDeleted(){
         // given:
-        LinkedList<String> list = new LinkedList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         list.add("Primero");
         list.add("Segundo");
@@ -188,7 +218,7 @@ public class LinkedListTest{
     @Test
     public void givenAListWith2Elements_whenDeleteForIndexMinus1_thenElementIsNotDeleted(){
         // given:
-        LinkedList<String> list = new LinkedList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         list.add("Primero");
         list.add("Segundo");
@@ -205,7 +235,7 @@ public class LinkedListTest{
     @Test
     public void givenAListWith2Elements_whenDeleteForIndex3_thenElementIsNotDeleted(){
         // given:
-        LinkedList<String> list = new LinkedList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         list.add("Primero");
         list.add("Segundo");
@@ -222,7 +252,7 @@ public class LinkedListTest{
     @Test
     public void givenAListWith2Elements_whenDeleteForIndex1_thenElementIsDeleted(){
         // given:
-        LinkedList<String> list = new LinkedList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         list.add("Primero");
         list.add("Segundo");
@@ -238,7 +268,7 @@ public class LinkedListTest{
     @Test
     public void givenAListWith3Elements_whenDeleteForIndex1_thenElementIsDeleted(){
         // given:
-        LinkedList<String> list = new LinkedList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         list.add("Primero");
         list.add("Segundo");
@@ -256,7 +286,7 @@ public class LinkedListTest{
     @Test
     public void givenAListWith3Elements_whenIterator_thenIteratorWorksFine(){
         // given:
-        LinkedList<String> list = new LinkedList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         list.add("Primero");
         list.add("Segundo");
@@ -278,7 +308,7 @@ public class LinkedListTest{
     @Test
     public void givenAListWith3Elements_whenReverseIterator_thenIteratorWorksFine(){
         // given:
-        LinkedList<String> list = new LinkedList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         list.add("Primero");
         list.add("Segundo");

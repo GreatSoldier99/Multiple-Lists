@@ -28,6 +28,7 @@ public class ArrayList<T> implements List<T> {
     }
 
     private class ReverseIterator implements Iterator <T>{
+        private int currentIndex = size-1;
         public final ArrayList<T> arrayList;
 
         ReverseIterator(ArrayList<T> arrayList){
@@ -35,11 +36,11 @@ public class ArrayList<T> implements List<T> {
         }
 
         public T next() {
-            return null;
+            return (T)array[currentIndex--];
         }
 
         public boolean hasNext() {
-            return false;
+            return currentIndex >= 0;
         }
     }
 
@@ -66,8 +67,13 @@ public class ArrayList<T> implements List<T> {
     }
 
     public void insert(T dato, int index) {
+        if (index < 0 || index>size){
+            return;
+        }
+
         int i;
         size++;
+
         if (size > capacity) {
             capacity += 10;
             array = Arrays.copyOf(array, capacity);
@@ -79,6 +85,11 @@ public class ArrayList<T> implements List<T> {
 
     public void delete(int index) {
         int i;
+
+        if (index < 0 || index > size) {
+            return;
+        }
+
         for (i = index; i < size; i++)
             array[i] = array[i + 1];
         size--;
@@ -86,6 +97,10 @@ public class ArrayList<T> implements List<T> {
 
     public int getSize() {
         return size;
+    }
+
+    public int getCapacity(){
+        return capacity;
     }
 
     public T getAt(int index) {
