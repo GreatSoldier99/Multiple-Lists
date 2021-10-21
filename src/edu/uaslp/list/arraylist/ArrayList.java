@@ -10,29 +10,49 @@ public class ArrayList<T> implements List<T> {
     private int capacity;
     private int size;
 
-    private class ArrayListIterator implements Iterator<T> {
-        private int currentIndex=0;
+    private class ForwardIterator implements Iterator<T> {
+        private int currentIndex = 0;
         public final ArrayList<T> arrayList;
 
-        ArrayListIterator(ArrayList<T> arrayList){
+        ForwardIterator(ArrayList<T> arrayList) {
+            this.arrayList = arrayList;
+        }
+
+        public T next() {
+            return (T) array[currentIndex++];
+        }
+
+        public boolean hasNext() {
+            return currentIndex < size;
+        }
+    }
+
+    private class ReverseIterator implements Iterator <T>{
+        public final ArrayList<T> arrayList;
+
+        ReverseIterator(ArrayList<T> arrayList){
             this.arrayList=arrayList;
         }
 
         public T next() {
-            return (T)array[currentIndex++];
+            return null;
         }
 
         public boolean hasNext() {
-            return currentIndex<size;
+            return false;
         }
     }
 
-    public Iterator<T> getIterator(){
-        return new ArrayListIterator(this);
+    public Iterator<T> getForwardIterator() {
+        return new ForwardIterator(this);
+    }
+
+    public Iterator<T> getReverseIterator(){
+        return new ReverseIterator(this);
     }
 
     public ArrayList() {
-        array= new Object[10];
+        array = new Object[10];
         capacity = 10;
     }
 
@@ -52,15 +72,15 @@ public class ArrayList<T> implements List<T> {
             capacity += 10;
             array = Arrays.copyOf(array, capacity);
         }
-        for(i=(size-1);i>index;i--)
-            array[i]=array[i-1];
-        array[i]=dato;
+        for (i = (size - 1); i > index; i--)
+            array[i] = array[i - 1];
+        array[i] = dato;
     }
 
     public void delete(int index) {
         int i;
-        for(i=index;i<size;i++)
-            array[i]=array[i+1];
+        for (i = index; i < size; i++)
+            array[i] = array[i + 1];
         size--;
     }
 
@@ -69,6 +89,6 @@ public class ArrayList<T> implements List<T> {
     }
 
     public T getAt(int index) {
-        return (T)array[index];
+        return (T) array[index];
     }
 }

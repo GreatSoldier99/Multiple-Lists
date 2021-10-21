@@ -12,5 +12,7 @@ public interface List<T>{
 
     void insert(T data, int index);
 
-    Iterator<T> getIterator();
+    Iterator<T> getForwardIterator();
+
+    Iterator<T> getReverseIterator();
 }

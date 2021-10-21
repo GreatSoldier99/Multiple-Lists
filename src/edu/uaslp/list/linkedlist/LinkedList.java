@@ -8,31 +8,52 @@ public class LinkedList<H> implements List<H> {
     private Node<H> tail;
     private int size;
 
-    private class LinkedListIterator implements Iterator<H> {
+    private class ForwardIterator implements Iterator<H> {
         private Node<H> currentNode;
 
-        LinkedListIterator(){
-            currentNode=head;
+        ForwardIterator() {
+            currentNode = head;
         }
 
-        public H next(){
-            H data=currentNode.data;
-            currentNode=currentNode.next;
+        public H next() {
+            H data = currentNode.data;
+            currentNode = currentNode.next;
             return data;
         }
 
         public boolean hasNext() {
-            return currentNode!=null;
+            return currentNode != null;
         }
     }
 
-    public Iterator<H> getIterator(){
-        return new LinkedListIterator();
+    private class ReverseIterator implements Iterator<H> {
+        private Node<H> currentNode;
+
+        ReverseIterator(){
+            currentNode = tail;
+        }
+
+        public H next() {
+            H data = currentNode.data;
+            currentNode = currentNode.previous;
+            return data;
+        }
+
+        public boolean hasNext() {
+            return currentNode != null;
+        }
+    }
+
+    public Iterator<H> getForwardIterator(){
+        return new ForwardIterator();
+    }
+
+    public Iterator<H> getReverseIterator(){
+        return new ReverseIterator();
     }
 
     public void add(H dato) {
         Node<H> node = new Node<>();
-
         node.data = dato;
 
         if (head == null) {
@@ -79,6 +100,7 @@ public class LinkedList<H> implements List<H> {
             iterator.previous.next = node;
         }
         iterator.previous = node;
+        size++;
     }
 
     public void delete(int index) {
