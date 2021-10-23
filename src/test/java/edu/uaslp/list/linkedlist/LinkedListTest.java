@@ -1,5 +1,6 @@
 package edu.uaslp.list.linkedlist;
 
+import edu.uaslp.list.linkedlist.LinkedList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

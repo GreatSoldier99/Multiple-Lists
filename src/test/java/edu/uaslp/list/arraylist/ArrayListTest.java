@@ -1,5 +1,6 @@
 package edu.uaslp.list.arraylist;
 
+import edu.uaslp.list.arraylist.ArrayList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
