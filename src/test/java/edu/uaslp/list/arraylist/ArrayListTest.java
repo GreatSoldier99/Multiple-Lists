@@ -96,7 +96,7 @@ public class ArrayListTest{
     }
 
     @Test
-    public void givenAListWithThreeElements_whenGetAtForIndex4_thenNullIsReturned() throws MyIndexOutOfBoundException{
+    public void givenAListWithThreeElements_whenGetAtForIndex4_thenMyIndexOutOfBoundExceptionIsThrown() throws MyIndexOutOfBoundException{
         // given:
         ArrayList<String> list = new ArrayList<>();
 
@@ -218,7 +218,7 @@ public class ArrayListTest{
     }
 
     @Test
-    public void givenAListWith2Elements_whenDeleteForIndexMinus1_thenElementIsNotDeleted() throws MyIndexOutOfBoundException{
+    public void givenAListWith2Elements_whenDeleteForIndexMinus1_thenMyIndexOutOfBoundExceptionIsThrown() throws MyIndexOutOfBoundException{
         // given:
         ArrayList<String> list = new ArrayList<>();
 
@@ -234,7 +234,7 @@ public class ArrayListTest{
     }
 
     @Test
-    public void givenAListWith2Elements_whenDeleteForIndex3_thenElementIsNotDeleted() throws MyIndexOutOfBoundException{
+    public void givenAListWith2Elements_whenDeleteForIndex3_thenMyIndexOutOfBoundExceptionIsThrown() throws MyIndexOutOfBoundException{
         // given:
         ArrayList<String> list = new ArrayList<>();
 

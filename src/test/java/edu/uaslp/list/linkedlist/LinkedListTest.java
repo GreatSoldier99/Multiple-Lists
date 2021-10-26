@@ -204,7 +204,7 @@ public class LinkedListTest{
     }
 
     @Test
-    public void givenAListWith2Elements_whenDeleteForIndex3_thenElementIsNotDeleted() throws MyIndexOutOfBoundException{
+    public void givenAListWith2Elements_whenDeleteForIndex3_thenMyIndexOutOfBoundExceptionIsThrown() throws MyIndexOutOfBoundException{
         // given:
         LinkedList<String> list = new LinkedList<>();
 
