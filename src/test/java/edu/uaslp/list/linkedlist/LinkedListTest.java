@@ -1,5 +1,6 @@
 package edu.uaslp.list.linkedlist;
 
+import edu.uaslp.list.MyIndexOutOfBoundException;
 import edu.uaslp.list.linkedlist.LinkedList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -47,7 +48,7 @@ public class LinkedListTest{
     }
 
     @Test
-    public void givenAListWithThreeElements_whenGetAt_thenElementsAreReturnedSuccessfully(){
+    public void givenAListWithThreeElements_whenGetAt_thenElementsAreReturnedSuccessfully() throws MyIndexOutOfBoundException{
         // given:
         LinkedList<String> list = new LinkedList<>();
 
@@ -64,7 +65,7 @@ public class LinkedListTest{
     }
 
     @Test
-    public void givenAListWithThreeElements_whenGetAtForIndex4_thenNullIsReturned(){
+    public void givenAListWithThreeElements_whenGetAtForIndex4_thenMyIndexOutOfBoundExceptionIsThrown() throws MyIndexOutOfBoundException{
         // given:
         LinkedList<String> list = new LinkedList<>();
 
@@ -75,12 +76,12 @@ public class LinkedListTest{
         // when:
         // then:
         Assertions.assertEquals(3, list.getSize());
-        Assertions.assertNull(list.getAt(4));
+        Assertions.assertThrows(MyIndexOutOfBoundException.class,() -> list.getAt(4));
     }
 
 
     @Test
-    public void givenAnEmptyList_whenInsert_thenElementIsInsertedSuccessfully(){
+    public void givenAnEmptyList_whenInsert_thenElementIsInsertedSuccessfully() throws MyIndexOutOfBoundException{
         // given:
         LinkedList<Float> list = new LinkedList<>();
 
@@ -116,8 +117,8 @@ public class LinkedListTest{
         Assertions.assertEquals(0, list.getSize());
     }
 
-    @Test//Debe corregirse
-    public void givenAListWith2Elements_whenInsertForIndex1_thenElementIsInserted(){
+    @Test
+    public void givenAListWith2Elements_whenInsertForIndex1_thenElementIsInserted() throws MyIndexOutOfBoundException{
         // given:
         LinkedList<String> list = new LinkedList<>();
 
@@ -135,7 +136,7 @@ public class LinkedListTest{
     }
 
     @Test//Debe corregirse
-    public void givenAListWith2Elements_whenInsertForIndex0_thenElementIsInserted(){
+    public void givenAListWith2Elements_whenInsertForIndex0_thenElementIsInserted() throws MyIndexOutOfBoundException{
         // given:
         LinkedList<String> list = new LinkedList<>();
 
@@ -153,7 +154,7 @@ public class LinkedListTest{
     }
 
     @Test
-    public void givenAListWith2Elements_whenInsertForIndex2_thenElementIsInserted(){
+    public void givenAListWith2Elements_whenInsertForIndex2_thenElementIsInserted() throws MyIndexOutOfBoundException{
         // given:
         LinkedList<String> list = new LinkedList<>();
 
@@ -171,7 +172,7 @@ public class LinkedListTest{
     }
 
     @Test
-    public void givenAListWith2Elements_whenDeleteForIndex0_thenElementIsDeleted(){
+    public void givenAListWith2Elements_whenDeleteForIndex0_thenElementIsDeleted() throws MyIndexOutOfBoundException{
         // given:
         LinkedList<String> list = new LinkedList<>();
 
@@ -187,7 +188,7 @@ public class LinkedListTest{
     }
 
     @Test
-    public void givenAListWith2Elements_whenDeleteForIndexMinus1_thenElementIsNotDeleted(){
+    public void givenAListWith2Elements_whenDeleteForIndexMinus1_thenMyIndexOutOfBoundExceptionIsThrown() throws MyIndexOutOfBoundException{
         // given:
         LinkedList<String> list = new LinkedList<>();
 
@@ -195,16 +196,15 @@ public class LinkedListTest{
         list.add("Segundo");
 
         // when:
-        list.delete( -1);
-
         // then:
         Assertions.assertEquals(2, list.getSize());
         Assertions.assertEquals("Primero", list.getAt(0));
         Assertions.assertEquals("Segundo", list.getAt(1));
+        Assertions.assertThrows(MyIndexOutOfBoundException.class, () -> list.delete(-1));
     }
 
     @Test
-    public void givenAListWith2Elements_whenDeleteForIndex3_thenElementIsNotDeleted(){
+    public void givenAListWith2Elements_whenDeleteForIndex3_thenElementIsNotDeleted() throws MyIndexOutOfBoundException{
         // given:
         LinkedList<String> list = new LinkedList<>();
 
@@ -212,16 +212,15 @@ public class LinkedListTest{
         list.add("Segundo");
 
         // when:
-        list.delete( 3);
-
         // then:
         Assertions.assertEquals(2, list.getSize());
         Assertions.assertEquals("Primero", list.getAt(0));
         Assertions.assertEquals("Segundo", list.getAt(1));
+        Assertions.assertThrows(MyIndexOutOfBoundException.class, () -> list.delete(3));
     }
 
     @Test
-    public void givenAListWith2Elements_whenDeleteForIndex1_thenElementIsDeleted(){
+    public void givenAListWith2Elements_whenDeleteForIndex1_thenElementIsDeleted() throws MyIndexOutOfBoundException{
         // given:
         LinkedList<String> list = new LinkedList<>();
 
@@ -237,7 +236,7 @@ public class LinkedListTest{
     }
 
     @Test
-    public void givenAListWith3Elements_whenDeleteForIndex1_thenElementIsDeleted(){
+    public void givenAListWith3Elements_whenDeleteForIndex1_thenElementIsDeleted() throws MyIndexOutOfBoundException{
         // given:
         LinkedList<String> list = new LinkedList<>();
 

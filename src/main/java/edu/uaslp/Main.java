@@ -10,5 +10,6 @@ import edu.uaslp.list.arraylist.ArrayList;
 
 public class Main{
     public static void main(String[] args){
+
     }
 }

@@ -6,9 +6,9 @@ public interface List<T>{
 
     int getSize();
 
-    T getAt(int index);
+    T getAt(int index) throws MyIndexOutOfBoundException;
 
-    void delete(int index);
+    void delete(int index) throws MyIndexOutOfBoundException;
 
     void insert(T data, int index);
 

@@ -1,5 +1,6 @@
 package edu.uaslp.list.arraylist;
 
+import edu.uaslp.list.MyIndexOutOfBoundException;
 import edu.uaslp.list.arraylist.ArrayList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -78,7 +79,7 @@ public class ArrayListTest{
     }
 
     @Test
-    public void givenAListWithThreeElements_whenGetAt_thenElementsAreReturnedSuccessfully(){
+    public void givenAListWithThreeElements_whenGetAt_thenElementsAreReturnedSuccessfully() throws MyIndexOutOfBoundException {
         // given:
         ArrayList<String> list = new ArrayList<>();
 
@@ -95,7 +96,7 @@ public class ArrayListTest{
     }
 
     @Test
-    public void givenAListWithThreeElements_whenGetAtForIndex4_thenNullIsReturned(){
+    public void givenAListWithThreeElements_whenGetAtForIndex4_thenNullIsReturned() throws MyIndexOutOfBoundException{
         // given:
         ArrayList<String> list = new ArrayList<>();
 
@@ -106,11 +107,11 @@ public class ArrayListTest{
         // when:
         // then:
         Assertions.assertEquals(3, list.getSize());
-        Assertions.assertNull(list.getAt(4));
+        Assertions.assertThrows(MyIndexOutOfBoundException.class, () -> list.getAt(4));
     }
 
     @Test
-    public void givenAnEmptyList_whenInsert_thenElementIsInsertedSuccessfully(){
+    public void givenAnEmptyList_whenInsert_thenElementIsInsertedSuccessfully() throws MyIndexOutOfBoundException{
         // given:
         ArrayList<Float> list = new ArrayList<>();
 
@@ -147,7 +148,7 @@ public class ArrayListTest{
     }
 
     @Test//Debe corregirse
-    public void givenAListWith2Elements_whenInsertForIndex1_thenElementIsInserted(){
+    public void givenAListWith2Elements_whenInsertForIndex1_thenElementIsInserted() throws MyIndexOutOfBoundException{
         // given:
         ArrayList<String> list = new ArrayList<>();
 
@@ -165,7 +166,7 @@ public class ArrayListTest{
     }
 
     @Test//Debe corregirse
-    public void givenAListWith2Elements_whenInsertForIndex0_thenElementIsInserted(){
+    public void givenAListWith2Elements_whenInsertForIndex0_thenElementIsInserted() throws MyIndexOutOfBoundException{
         // given:
         ArrayList<String> list = new ArrayList<>();
 
@@ -183,7 +184,7 @@ public class ArrayListTest{
     }
 
     @Test
-    public void givenAListWith2Elements_whenInsertForIndex2_thenElementIsInserted(){
+    public void givenAListWith2Elements_whenInsertForIndex2_thenElementIsInserted() throws MyIndexOutOfBoundException{
         // given:
         ArrayList<String> list = new ArrayList<>();
 
@@ -201,7 +202,7 @@ public class ArrayListTest{
     }
 
     @Test
-    public void givenAListWith2Elements_whenDeleteForIndex0_thenElementIsDeleted(){
+    public void givenAListWith2Elements_whenDeleteForIndex0_thenElementIsDeleted() throws MyIndexOutOfBoundException{
         // given:
         ArrayList<String> list = new ArrayList<>();
 
@@ -217,7 +218,7 @@ public class ArrayListTest{
     }
 
     @Test
-    public void givenAListWith2Elements_whenDeleteForIndexMinus1_thenElementIsNotDeleted(){
+    public void givenAListWith2Elements_whenDeleteForIndexMinus1_thenElementIsNotDeleted() throws MyIndexOutOfBoundException{
         // given:
         ArrayList<String> list = new ArrayList<>();
 
@@ -225,16 +226,15 @@ public class ArrayListTest{
         list.add("Segundo");
 
         // when:
-        list.delete( -1);
-
         // then:
         Assertions.assertEquals(2, list.getSize());
         Assertions.assertEquals("Primero", list.getAt(0));
         Assertions.assertEquals("Segundo", list.getAt(1));
+        Assertions.assertThrows(MyIndexOutOfBoundException.class, () -> list.delete(-1));
     }
 
     @Test
-    public void givenAListWith2Elements_whenDeleteForIndex3_thenElementIsNotDeleted(){
+    public void givenAListWith2Elements_whenDeleteForIndex3_thenElementIsNotDeleted() throws MyIndexOutOfBoundException{
         // given:
         ArrayList<String> list = new ArrayList<>();
 
@@ -242,16 +242,15 @@ public class ArrayListTest{
         list.add("Segundo");
 
         // when:
-        list.delete( 3);
-
         // then:
         Assertions.assertEquals(2, list.getSize());
         Assertions.assertEquals("Primero", list.getAt(0));
         Assertions.assertEquals("Segundo", list.getAt(1));
+        Assertions.assertThrows(MyIndexOutOfBoundException.class, () -> list.delete(3));
     }
 
     @Test
-    public void givenAListWith2Elements_whenDeleteForIndex1_thenElementIsDeleted(){
+    public void givenAListWith2Elements_whenDeleteForIndex1_thenElementIsDeleted() throws MyIndexOutOfBoundException{
         // given:
         ArrayList<String> list = new ArrayList<>();
 
@@ -267,7 +266,7 @@ public class ArrayListTest{
     }
 
     @Test
-    public void givenAListWith3Elements_whenDeleteForIndex1_thenElementIsDeleted(){
+    public void givenAListWith3Elements_whenDeleteForIndex1_thenElementIsDeleted() throws MyIndexOutOfBoundException{
         // given:
         ArrayList<String> list = new ArrayList<>();
 

@@ -2,6 +2,7 @@ package edu.uaslp.list.arraylist;
 
 import edu.uaslp.list.Iterator;
 import edu.uaslp.list.List;
+import edu.uaslp.list.MyIndexOutOfBoundException;
 
 import java.util.Arrays;
 
@@ -83,11 +84,11 @@ public class ArrayList<T> implements List<T> {
         array[i] = dato;
     }
 
-    public void delete(int index) {
+    public void delete(int index) throws MyIndexOutOfBoundException{
         int i;
 
-        if (index < 0 || index > size) {
-            return;
+        if (index < 0 || index >= size) {
+            throw new MyIndexOutOfBoundException();
         }
 
         for (i = index; i < size; i++)
@@ -103,7 +104,10 @@ public class ArrayList<T> implements List<T> {
         return capacity;
     }
 
-    public T getAt(int index) {
+    public T getAt(int index) throws MyIndexOutOfBoundException{
+        if(index < 0 || index >= size)
+            throw new MyIndexOutOfBoundException();
+
         return (T) array[index];
     }
 }
